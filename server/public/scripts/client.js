@@ -27,6 +27,19 @@ function postJoke () {
         "questionIn": questionIn,
         "punchlineIn": punchlineIn
         }
+        .then(response){
+
+        }
+        .catch(err){
+            console.log('You got an error',err);
+        }
     })
     console.log(myData);
 };
+
+function appendNewJokes (){
+
+    $('/jokes', function(response){
+       $('#outputDiv')
+    })
+}
