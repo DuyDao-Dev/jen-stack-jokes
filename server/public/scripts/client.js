@@ -7,16 +7,11 @@ function onReady() {
     $('#addJokeButton').on('click', postJoke)
 }
 
-let whoseJokeIn = '';
-let questionIn = '';
-let punchlineIn = ''
+let whoseJokeIn = [];
+let questionIn = [];
+let punchlineIn = [];
 
 function postJoke () {
-    let myData = {
-        "whoseJokeIn": whoseJokeIn,
-        "questionIn": questionIn,
-        "punchlineIn": punchlineIn
-    }
 
     console.log('Posting Joke');
     whoseJokeIn = $('#whoseJokeIn').val();
@@ -26,7 +21,12 @@ function postJoke () {
     $.ajax({
         method: 'post',
         url: '/newjoke',
-        data: myData
+        data: 
+        myData = {
+        "whoseJokeIn": whoseJokeIn,
+        "questionIn": questionIn,
+        "punchlineIn": punchlineIn
+        }
     })
     console.log(myData);
 };
