@@ -33,15 +33,14 @@ function postJoke () {
         .then( function(response){
             console.log(response);
             // refresh jokes
-            getJokes();
-            
+            appendNewJokes(response)
         }) // end .then
         .catch(function (err){
             console.log('You got an error',err);
         }) // end .catch
     }
 
-function appendNewJokes (){
+function appendNewJokes (response){
 
     $('/jokes', function(response){
        $('#outputDiv')

@@ -6,6 +6,10 @@ const PORT = 5000;
 // use bodyParser.urlencoded throughout the app with this:
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.listen(PORT, () => {
+  console.log('server running on: ', PORT);
+}); // end spin up server
+
 let jokes = [
   {
     whoseJoke: "Danny",
@@ -52,7 +56,5 @@ app.get('/newjoke', function(req,res){
 
 
 
-app.listen(PORT, () => {
-  console.log('server running on: ', PORT);
-}); // end spin up server
+
 
