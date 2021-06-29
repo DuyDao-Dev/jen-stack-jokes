@@ -42,19 +42,27 @@ function postJoke () {
 
 function appendNewJokes (response){
 
-     $.ajax({
-            method: 'get',
-            url: '/newjoke',
-        }) // end .ajax
-        .then( function(response){
-            console.log('Here is the response from the server',response);
-            //loop the response array. This is where we can append.
-            for (let i = 0; i < response.jokes.length; i++) {
-                let newLi = $('<li>').text(response.jokes[i]);
-                $('#jokeCollection').append(newLi);
-            }
-        }) 
-        .catch(function (err){
-            console.log('You got an error',err);
-        });
+    //  $.ajax({
+    //         method: 'get',
+    //         url: '/newjoke',
+    //     }) // end .ajax
+    //     .then( function(response){
+    //         console.log('Here is the response from the server',response);
+    //         //loop the response array. This is where we can append.
+    //         for (let i = 0; i < response.jokes.length; i++) {
+    //             let newLi = $('<li>').text(response.jokes[i]);
+    //             $('#jokeCollection').append(newLi);
+    //         }
+    //     }) 
+    //     .catch(function (err){
+    //         console.log('You got an error',err);
+    //     });
+
+    $.get('/newjoke', function(response){
+    console.log(response);
+    for (let i = 0; i < response.length; i++) {
+      let newLi = $('<li>').text(response.jokes[i]);
+      $('#jokeCollection').append(newLi);
+    }
+  });
 }
