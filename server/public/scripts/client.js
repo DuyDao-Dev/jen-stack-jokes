@@ -7,35 +7,39 @@ function onReady() {
     $('#addJokeButton').on('click', postJoke)
 }
 
-let whoseJokeIn = [];
-let questionIn = [];
-let punchlineIn = [];
+    let whoseJokeIn = [];
+    let questionIn = [];
+    let punchlineIn = [];
 
 function postJoke () {
 
-    console.log('Posting Joke');
     whoseJokeIn = $('#whoseJokeIn').val();
     questionIn = $('#questionIn').val();
     punchlineIn = $('#punchlineIn').val();
 
-    $.ajax({
-        method: 'post',
-        url: '/newjoke',
-        data: 
-        myData = {
-        "whoseJokeIn": whoseJokeIn,
-        "questionIn": questionIn,
-        "punchlineIn": punchlineIn
-        }
-        .then(response){
-
-        }
-        .catch(err){
+    // package up inputs as an object
+    let myData = {        
+        whoseJokeIn: whoseJokeIn,
+        questionIn: questionIn,
+        punchlineIn: punchlineIn
+    }
+    console.log('Posting Joke',myData);
+    // make POST request and handle response
+        $.ajax({
+            method: 'post',
+            url: '/newjoke',
+            data: myData
+        }) // end .ajax
+        .then( function(response){
+            console.log(response);
+            // refresh jokes
+            getJokes();
+            
+        }) // end .then
+        .catch(function (err){
             console.log('You got an error',err);
-        }
-    })
-    console.log(myData);
-};
+        }) // end .catch
+    }
 
 function appendNewJokes (){
 

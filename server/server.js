@@ -37,16 +37,17 @@ let jokes = [
 // serve back static files
 app.use(express.static('server/public'));
 
-app.post('/newjoke', function(req,res){
-  console.log ('Server is talking to client', req.body);
+app.post('/newjoke',function(req,res){
+  console.log ('Client is talking to server', req.body);
   jokes.push(req.body);
   res.sendStatus(201);
 });
 
 
 
-app.get('/jokes', function(req,res){
+app.get('/newjoke', function(req,res){
   console.log(jokes);
+  res.send('Server talking to client')
 });
 
 
