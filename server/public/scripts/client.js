@@ -51,7 +51,7 @@ function appendNewJokes (response){
             //loop the response array. This is where we can append.
             for (let i = 0; i < response.jokes.length; i++) {
                 let newLi = $('<li>').text(response.jokes[i]);
-                $('#jokeCollection').append(newLi)
+                $('#jokeCollection').append(newLi);
             }
         }) 
         .catch(function (err){
