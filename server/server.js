@@ -51,7 +51,7 @@ app.post('/newjoke',function(req,res){
 
 app.get('/newjoke', function(req,res){
   console.log(jokes);
-  res.send('Server talking to client')
+  res.send(jokes);
 });
 
 

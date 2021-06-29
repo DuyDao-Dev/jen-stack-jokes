@@ -13,9 +13,9 @@
 
 
 -Server side
-[ ] Create an app.post to receive the data.
-[ ] Create an app.get to send back to client.
-[ ] Compiling jokes should be on the server side and have it sent to (GET) on client side.
+[x] Create an app.post to receive the data.
+[x] Create an app.get to send back to client.
+[] Compiling jokes should be on the server side and have it sent to (GET) on client side.
 
 
 * when the app is loaded, all jokes should be displayed on the DOM below the inputs

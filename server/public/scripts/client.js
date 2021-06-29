@@ -19,9 +19,9 @@ function postJoke () {
 
     // package up inputs as an object
     let myData = {        
-        whoseJokeIn: whoseJokeIn,
-        questionIn: questionIn,
-        punchlineIn: punchlineIn
+        whoseJoke: whoseJokeIn,
+        jokeQuestion: questionIn,
+        punchLine: punchlineIn
     }
     console.log('Posting Joke',myData);
     // make POST request and handle response
@@ -42,7 +42,19 @@ function postJoke () {
 
 function appendNewJokes (response){
 
-    $('/jokes', function(response){
-       $('#outputDiv')
-    })
+     $.ajax({
+            method: 'get',
+            url: '/newjoke',
+        }) // end .ajax
+        .then( function(response){
+            console.log('Here is the response from the server',response);
+            //loop the response array. This is where we can append.
+            for (let i = 0; i < response.jokes.length; i++) {
+                let newLi = $('<li>').text(response.jokes[i]);
+                $('#jokeCollection').append(newLi)
+            }
+        }) 
+        .catch(function (err){
+            console.log('You got an error',err);
+        });
 }
