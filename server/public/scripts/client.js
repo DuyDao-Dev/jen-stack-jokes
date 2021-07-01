@@ -4,6 +4,7 @@ $( document ).ready( onReady );
 
 function onReady() {
     $('#addJokeButton').on('click', postJoke)
+    appendNewJokes();
 }
 
     let whoseJokeIn = [];
@@ -31,6 +32,7 @@ function postJoke () {
         }) // end .ajax
         .then( function(response){
             console.log(response);
+            appendNewJokes();
             // refresh jokes (removing the call for appendNewJokes from line 36)
         }) // end .then
         .catch(function (err){
@@ -46,11 +48,15 @@ function appendNewJokes (response){
         }) // end .ajax
         .then( function(response){
             //loop the response array. This is where we can append.
-            for (let i = 0; i < response.jokes.length; i++) {
-                let newLi = $('<li>').text(response.jokes[i]);
+            for (let i = 0; i < response.length; i++) {
+                let newLi = $('<li>').text(
+                    `${response[i].whoseJoke},
+                     ${response[i].jokeQuestion}
+                     ${response[i].punchLine} `);
                 $('#jokeCollection').append(newLi);
                 console.log('What is the newLi doing?',response);
                 //Why wont this log show up in console? 
+                console.log('Whats coming in from server', response[i]);
             }
         }) 
         .catch(function (err){
